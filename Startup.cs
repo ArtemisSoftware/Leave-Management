@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using LeaveManagement.Contracts;
 using LeaveManagement.Repository;
+using AutoMapper;
+using LeaveManagement.Mappings;
 
 namespace LeaveManagement
 {
@@ -39,6 +41,9 @@ namespace LeaveManagement
             services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
             services.AddScoped<ILeaveHistoryRepository, LeaveHistoryRepository>();
             services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
+
+
+            services.AddAutoMapper(typeof(Maps));
 
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
