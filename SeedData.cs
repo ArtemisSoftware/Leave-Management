@@ -20,11 +20,11 @@ namespace LeaveManagement
             {
                 var user = new IdentityUser
                 {
-                    UserName = "admin",
+                    UserName = "admin@localhost",
                     Email = "admin@localhost"
                 };
 
-                var result = userManager.CreateAsync(user, "Lm.admin11.").Result;
+                var result = userManager.CreateAsync(user, "Lm.admin1").Result;
 
                 if (result.Succeeded)
                 {
