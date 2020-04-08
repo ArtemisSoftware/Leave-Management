@@ -17,12 +17,15 @@ namespace LeaveManagement.Data
 
         public DateTime DateCreated { get; set; }
 
-        public EmployeeViewModel Employee { get; set; }
+        public Employee Employee { get; set; }
 
         public string EmployeeId { get; set; }
 
-        public LeaveTypeViewModel LeaveType { get; set; }
+        public LeaveType LeaveType { get; set; }
 
         public int LeaveTypeId { get; set; }
+
+
+        public int Period { get; set; }
     }
 }

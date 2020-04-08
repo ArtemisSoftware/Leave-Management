@@ -17,6 +17,7 @@ namespace LeaveManagement.Models
 
         public DateTime DateCreated { get; set; }
 
+        public int Period { get; set; }
 
         public EmployeeViewModel Employee { get; set; }
 
@@ -32,5 +33,12 @@ namespace LeaveManagement.Models
 
         public IEnumerable<SelectListItem> LeaveTypes { get; set; }
 
+    }
+
+
+    public class CreateLeaveAllocationViewModel
+    {
+        public int NumberUpdated { get; set; }
+        public List<LeaveTypeViewModel> LeaveTypes { get; set; }
     }
 }

@@ -5,6 +5,21 @@
     <UserSecretsId>aspnet-LeaveManagement-D6946930-89A9-4298-8401-5DC8375248DA</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200408115051_AddedPeriod.cs" />
+    <Compile Remove="Data\Migrations\20200408115051_AddedPeriod.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200408115354_AddedPeriod.cs" />
+    <Compile Remove="Data\Migrations\20200408115354_AddedPeriod.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200408115719_AddedPeriod.cs" />
+    <Compile Remove="Data\Migrations\20200408115719_AddedPeriod.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200408135838_AddedPeriod.cs" />
+    <Compile Remove="Data\Migrations\20200408135838_AddedPeriod.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200408141017_lolo.cs" />
+    <Compile Remove="Data\Migrations\20200408141017_lolo.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200408152142_AddedLeaveTables.cs" />
+    <Compile Remove="Data\Migrations\20200408152142_AddedLeaveTables.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />

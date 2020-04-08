@@ -31,6 +31,21 @@ namespace LeaveManagement
                     userManager.AddToRoleAsync(user, "Administrator").Wait();
                 }
 
+
+                user = new IdentityUser
+                {
+                    UserName = "employee@localhost",
+                    Email = "employee@localhost"
+                };
+
+                result = userManager.CreateAsync(user, "Lm.admin1").Result;
+
+                if (result.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user, "Employee").Wait();
+                }
+
+
             }
         }
 
