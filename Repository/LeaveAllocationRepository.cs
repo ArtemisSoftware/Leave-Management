@@ -21,7 +21,7 @@ namespace LeaveManagement.Repository
         {
             var period = DateTime.Now.Year;
             var allocations = FindAll();
-            return allocations.Where(result => result.EmployeeId == employeeid && result.LeaveTypeId == leavetypeid && result.Period == period).Any();
+            return allocations.Where(result => result.EmployeeId == employeeid && result.LeaveTypeId == leavetypeid/* && result.Period == period*/).Any();
         }
 
         public bool Create(LeaveAllocation entity)

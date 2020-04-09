@@ -20,9 +20,9 @@ namespace LeaveManagement.Controllers
         private readonly ILeaveTypeRepository _leaverepo;
         private readonly ILeaveAllocationRepository _leaveallocationrepo;
         private readonly IMapper _mapper;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Employee> _userManager;
 
-        public LeaveAllocationController(ILeaveTypeRepository leaverepo, ILeaveAllocationRepository leaveallocationrepo, IMapper mapper, UserManager<IdentityUser> userManager)
+        public LeaveAllocationController(ILeaveTypeRepository leaverepo, ILeaveAllocationRepository leaveallocationrepo, IMapper mapper, UserManager<Employee> userManager)
         {
             this._leaverepo = leaverepo;
             this._leaveallocationrepo = leaveallocationrepo;
@@ -67,7 +67,7 @@ namespace LeaveManagement.Controllers
                     DateCreated = DateTime.Now,
                     EmployeeId = employee.Id,
                     LeaveTypeId = id,
-                    NumberOfDays = leavetype.DefaultDays,
+                    //NumberOfDays = leavetype.DefaultDays,
                     Period = DateTime.Now.Year,
                 };
                 
@@ -78,6 +78,18 @@ namespace LeaveManagement.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+
+
+        public ActionResult ListEmployees()
+        {
+
+            var employees = _userManager.GetUsersInRoleAsync("Employee").Result;
+            var model = _mapper.Map<List<EmployeeViewModel>>(employees);
+
+
+            return View(model);
+        }
+
 
 
         // GET: LeaveAllocation/Details/5

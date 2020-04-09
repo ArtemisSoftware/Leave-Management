@@ -18,6 +18,8 @@
     <Compile Remove="Data\Migrations\20200408141017_lolo.Designer.cs" />
     <Compile Remove="Data\Migrations\20200408152142_AddedLeaveTables.cs" />
     <Compile Remove="Data\Migrations\20200408152142_AddedLeaveTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200408161711_AddDetailLeaveTables.cs" />
+    <Compile Remove="Data\Migrations\20200408161711_AddDetailLeaveTables.Designer.cs" />
   </ItemGroup>
 
 
