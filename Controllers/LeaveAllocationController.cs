@@ -67,7 +67,7 @@ namespace LeaveManagement.Controllers
                     DateCreated = DateTime.Now,
                     EmployeeId = employee.Id,
                     LeaveTypeId = id,
-                    //NumberOfDays = leavetype.DefaultDays,
+                    NumberOfDays = leavetype.DefaultDays,
                     Period = DateTime.Now.Year,
                 };
                 
@@ -93,9 +93,18 @@ namespace LeaveManagement.Controllers
 
 
         // GET: LeaveAllocation/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            var employee = _mapper.Map<EmployeeViewModel>(_userManager.FindByIdAsync(id).Result);
+
+            var allocations = _mapper.Map <List<LeaveAllocationViewModel>>(_leaveallocationrepo.GetLeaveAllocationByEmployee(id));
+
+            var model = new ViewAllocationViewModel{
+                Employee = employee,
+                LeaveAllocations = allocations
+
+            };
+            return View(model);
         }
 
         // GET: LeaveAllocation/Create
