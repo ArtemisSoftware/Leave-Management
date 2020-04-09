@@ -15,6 +15,7 @@ namespace LeaveManagement.Data
 
         public int DefaultDays { get; set; }
 
+
         public DateTime DateCreated { get; set; }
     }
 }

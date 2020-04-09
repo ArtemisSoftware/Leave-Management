@@ -20,6 +20,8 @@ namespace LeaveManagement.Models
 
         public int Period { get; set; }
 
+      
+
         public EmployeeViewModel Employee { get; set; }
 
         public string EmployeeId { get; set; }
