@@ -13,6 +13,7 @@ namespace LeaveManagement.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Number Of Days")]
         public int NumberOfDays { get; set; }
 
         public DateTime DateCreated { get; set; }
@@ -40,6 +41,19 @@ namespace LeaveManagement.Models
     }
 
 
+    public class EditLeaveAllocationViewModel
+    {
+
+        public int Id { get; set; }
+
+        [Display(Name = "Number Of Days")]
+        public int NumberOfDays { get; set; }
+
+        public EmployeeViewModel Employee { get; set; }
+        public string EmployeeId { get; set; }
+
+        public LeaveTypeViewModel LeaveType { get; set; }
+    }
 
     public class ViewAllocationViewModel
     {

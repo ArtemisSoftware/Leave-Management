@@ -30,4 +30,7 @@ namespace LeaveManagement.Data
 
         public int Period { get; set; }
     }
+
+
+
 }
