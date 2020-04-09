@@ -12,12 +12,15 @@ namespace LeaveManagement.Models
 
         public int Id { get; set; }
 
+        [Required]
+        [Display(Name = "Number Of Days")]
         public int NumberOfDays { get; set; }
 
         public DateTime DateCreated { get; set; }
 
         public int Period { get; set; }
 
+      
 
         public EmployeeViewModel Employee { get; set; }
 
@@ -29,9 +32,39 @@ namespace LeaveManagement.Models
         public int LeaveTypeId { get; set; }
 
 
-        public IEnumerable<SelectListItem> Employees { get; set; }
 
-        public IEnumerable<SelectListItem> LeaveTypes { get; set; }
+    }
 
+
+    public class CreateLeaveAllocationViewModel
+    {
+        public int NumberUpdated { get; set; }
+        public List<LeaveTypeViewModel> LeaveTypes { get; set; }
+    }
+
+
+    public class EditLeaveAllocationViewModel
+    {
+
+        public int Id { get; set; }
+
+        [Display(Name = "Number Of Days")]
+        public int NumberOfDays { get; set; }
+
+        public EmployeeViewModel Employee { get; set; }
+        public string EmployeeId { get; set; }
+
+        public LeaveTypeViewModel LeaveType { get; set; }
+    }
+
+    public class ViewAllocationViewModel
+    {
+
+        public EmployeeViewModel Employee { get; set; }
+
+        public string EmployeeId { get; set; }
+
+
+        public List<LeaveAllocationViewModel> LeaveAllocations { get; set; }
     }
 }
