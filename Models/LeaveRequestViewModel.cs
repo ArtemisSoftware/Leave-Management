@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,11 +16,17 @@ namespace LeaveManagement.Models
         
         public EmployeeViewModel RequestingEmployee { get; set; }
 
+        [Display(Name = "Employee Name")]
         public string RequestingEmployeeId { get; set; }
 
-
+        [Display(Name = "Start Date")]
+        [Required]
+        [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
 
+        [Display(Name = "End Date")]
+        [Required]
+        [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
 
 
@@ -27,14 +34,16 @@ namespace LeaveManagement.Models
 
         public int LeaveTypeId { get; set; }
 
-
+        [Display(Name = "Date Requestes")]
         public DateTime DateRequested { get; set; }
 
+        [Display(Name = "Date Actioned")]
         public DateTime DateActioned { get; set; }
 
-
+        [Display(Name = "Approval State")]
         public bool? Approved { get; set; }
 
+        [Display(Name = "Approver Name")]
         public EmployeeViewModel ApprovedBy { get; set; }
 
         public string ApprovedById { get; set; }
@@ -58,5 +67,20 @@ namespace LeaveManagement.Models
         public List<LeaveRequestViewModel> LeaveRequests { get; set; }
     }
 
+    public class CreateLeaveRequestViewModel
+    {
+        [Display(Name = "Start Date")]
+        [Required]
+        public DateTime StartDate { get; set; }
 
+        [Display(Name = "End Date")]
+        [Required]
+        public DateTime EndDate { get; set; }
+
+
+        public IEnumerable<SelectListItem> LeaveTypes { get; set; }
+
+        [Display(Name = "Leave Type")]
+        public int LeaveTypeId { get; set; }
+    }
 }
