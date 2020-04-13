@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -42,12 +43,16 @@ namespace LeaveManagement.Models
 
     public class AdminLeaveRequestViewModel
     {
+        [Display(Name = "Total Number of Requests")]
         public int TotalRequests { get; set; }
 
+        [Display (Name= "Approved Requests")]
         public int ApprovedRequests { get; set; }
 
+        [Display(Name = "Pending Requests")]
         public int PendingRequests { get; set; }
 
+        [Display(Name = "Rejected Requests")]
         public int RejectedRequests { get; set; }
 
         public List<LeaveRequestViewModel> LeaveRequests { get; set; }
