@@ -22,6 +22,8 @@ namespace LeaveManagement.Mappings
             CreateMap<LeaveRequest, LeaveRequestViewModel>().ReverseMap();
 
             CreateMap<Employee, EmployeeViewModel>().ReverseMap();
+
+            //CreateMap<Employee, EmployeeViewModel>().ReverseMap();
         }
     }
 }
