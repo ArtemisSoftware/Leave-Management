@@ -57,8 +57,68 @@ namespace LeaveManagement.Controllers
         // GET: LeaveRequest/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            var leaveRequest = _leaveaRequestrepo.FindById(id);
+            var model = _mapper.Map<LeaveRequestViewModel>(leaveRequest);
+
+            return View(model);
         }
+
+
+        public ActionResult ApproveRequest(int id)
+        {
+            try
+            {
+
+                var user = _userManager.GetUserAsync(User).Result;
+                var leaveRequest = _leaveaRequestrepo.FindById(id);
+                var allocation = _leaveaAllocationrepo.GetLeaveAllocationByEmployeeAndType(leaveRequest.RequestingEmployeeId, leaveRequest.LeaveTypeId);
+
+                int daysRequested = (int)(leaveRequest.EndDate.Date - leaveRequest.StartDate.Date).TotalDays;
+
+                allocation.NumberOfDays -= daysRequested;
+
+                leaveRequest.Approved = true;
+                leaveRequest.ApprovedById = user.Id;
+                leaveRequest.DateActioned = DateTime.Now;
+
+
+                _leaveaRequestrepo.Update(leaveRequest);
+                _leaveaAllocationrepo.Update(allocation);
+                return RedirectToAction(nameof(Index));
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+        }
+
+
+        public ActionResult RejectRequest(int id)
+        {
+            try
+            {
+
+                var user = _userManager.GetUserAsync(User).Result;
+                var leaveRequest = _leaveaRequestrepo.FindById(id);
+
+                leaveRequest.Approved = false;
+                leaveRequest.ApprovedById = user.Id;
+                leaveRequest.DateActioned = DateTime.Now;
+
+
+                var isSuccess = _leaveaRequestrepo.Update(leaveRequest);
+                return RedirectToAction(nameof(Index), "Home");
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction(nameof(Index), "Home");
+            }
+        }
+
 
         // GET: LeaveRequest/Create
         public ActionResult Create()
