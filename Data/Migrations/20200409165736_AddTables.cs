@@ -3,10 +3,41 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LeaveManagement.Data.Migrations
 {
-    public partial class AddDetailLeaveTables : Migration
+    public partial class AddTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DateJoined",
+                table: "AspNetUsers",
+                nullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DateOfBirth",
+                table: "AspNetUsers",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Firstname",
+                table: "AspNetUsers",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "LastName",
+                table: "AspNetUsers",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "TaxId",
+                table: "AspNetUsers",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Discriminator",
+                table: "AspNetUsers",
+                nullable: false,
+                defaultValue: "");
+
             migrationBuilder.CreateTable(
                 name: "LeaveTypes",
                 columns: table => new
@@ -14,6 +45,7 @@ namespace LeaveManagement.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
+                    DefaultDays = table.Column<int>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -30,7 +62,8 @@ namespace LeaveManagement.Data.Migrations
                     NumberOfDays = table.Column<int>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     EmployeeId = table.Column<string>(nullable: true),
-                    LeaveTypeId = table.Column<int>(nullable: false)
+                    LeaveTypeId = table.Column<int>(nullable: false),
+                    Period = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,7 +83,7 @@ namespace LeaveManagement.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LeaveHistories",
+                name: "LeaveRequests",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -66,21 +99,21 @@ namespace LeaveManagement.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LeaveHistories", x => x.Id);
+                    table.PrimaryKey("PK_LeaveRequests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LeaveHistories_AspNetUsers_ApprovedById",
+                        name: "FK_LeaveRequests_AspNetUsers_ApprovedById",
                         column: x => x.ApprovedById,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_LeaveHistories_LeaveTypes_LeaveTypeId",
+                        name: "FK_LeaveRequests_LeaveTypes_LeaveTypeId",
                         column: x => x.LeaveTypeId,
                         principalTable: "LeaveTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LeaveHistories_AspNetUsers_RequestingEmployeeId",
+                        name: "FK_LeaveRequests_AspNetUsers_RequestingEmployeeId",
                         column: x => x.RequestingEmployeeId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -98,18 +131,18 @@ namespace LeaveManagement.Data.Migrations
                 column: "LeaveTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaveHistories_ApprovedById",
-                table: "LeaveHistories",
+                name: "IX_LeaveRequests_ApprovedById",
+                table: "LeaveRequests",
                 column: "ApprovedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaveHistories_LeaveTypeId",
-                table: "LeaveHistories",
+                name: "IX_LeaveRequests_LeaveTypeId",
+                table: "LeaveRequests",
                 column: "LeaveTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaveHistories_RequestingEmployeeId",
-                table: "LeaveHistories",
+                name: "IX_LeaveRequests_RequestingEmployeeId",
+                table: "LeaveRequests",
                 column: "RequestingEmployeeId");
         }
 
@@ -119,10 +152,34 @@ namespace LeaveManagement.Data.Migrations
                 name: "LeaveAllocations");
 
             migrationBuilder.DropTable(
-                name: "LeaveHistories");
+                name: "LeaveRequests");
 
             migrationBuilder.DropTable(
                 name: "LeaveTypes");
+
+            migrationBuilder.DropColumn(
+                name: "DateJoined",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "DateOfBirth",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Firstname",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "LastName",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "TaxId",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Discriminator",
+                table: "AspNetUsers");
         }
     }
 }

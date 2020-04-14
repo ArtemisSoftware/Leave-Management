@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UserSecretsId>aspnet-LeaveManagement-D6946930-89A9-4298-8401-5DC8375248DA</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup><!--
     <Compile Remove="Data\Migrations\20200408115051_AddedPeriod.cs" />
     <Compile Remove="Data\Migrations\20200408115051_AddedPeriod.Designer.cs" />
     <Compile Remove="Data\Migrations\20200408115354_AddedPeriod.cs" />
@@ -20,6 +20,18 @@
     <Compile Remove="Data\Migrations\20200408152142_AddedLeaveTables.Designer.cs" />
     <Compile Remove="Data\Migrations\20200408161711_AddDetailLeaveTables.cs" />
     <Compile Remove="Data\Migrations\20200408161711_AddDetailLeaveTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200409161924_ChangedLeaveHistoriesTableName.cs" />
+    <Compile Remove="Data\Migrations\20200409161924_ChangedLeaveHistoriesTableName.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200409162417_ChangedLeaveHistoriesTableName.cs" />
+    <Compile Remove="Data\Migrations\20200409162417_ChangedLeaveHistoriesTableName.Designer.cs" />
+    -->
+  
+    <Compile Remove="Data\Migrations\20200409165516_AddTables.cs" />
+    <Compile Remove="Data\Migrations\20200409165516_AddTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200414141221_AddLeaveRequestCancelComments.cs" />
+    <Compile Remove="Data\Migrations\20200414141221_AddLeaveRequestCancelComments.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200414141611_AddLeaveRequestCancelComments.cs" />
+    <Compile Remove="Data\Migrations\20200414141611_AddLeaveRequestCancelComments.Designer.cs" />
   </ItemGroup>
 
 
