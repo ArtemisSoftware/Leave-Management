@@ -226,7 +226,9 @@ namespace LeaveManagement.Controllers
                     Approved = null,
                     DateRequested = DateTime.Now,
                     DateActioned = DateTime.Now,
-                    LeaveTypeId = model.LeaveTypeId
+                    LeaveTypeId = model.LeaveTypeId,
+                    RequestComments = model.RequestComments
+                    
                 };
 
                 var leaveRequest = _mapper.Map<LeaveRequest>(leaveRequestModel);
@@ -248,6 +250,17 @@ namespace LeaveManagement.Controllers
                 return View();
             }
         }
+
+
+        public ActionResult CancelRequest(int id)
+        {
+            var leaveRequest = _leaveaRequestrepo.FindById(id);
+            leaveRequest.Cancelled = true;
+            _leaveaRequestrepo.Update(leaveRequest);
+            return RedirectToAction("MyLeave");
+        }
+
+
 
         // GET: LeaveRequest/Edit/5
         public ActionResult Edit(int id)

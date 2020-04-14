@@ -47,6 +47,13 @@ namespace LeaveManagement.Models
         public EmployeeViewModel ApprovedBy { get; set; }
 
         public string ApprovedById { get; set; }
+
+
+        [Display(Name = "Employee Comments")]
+        [MaxLength(300)]
+        public string RequestComments { get; set; }
+
+        public bool Cancelled { get; set; }
     }
 
 
@@ -82,6 +89,10 @@ namespace LeaveManagement.Models
 
         [Display(Name = "Leave Type")]
         public int LeaveTypeId { get; set; }
+
+        [Display(Name = "Employee Comments")]
+        [MaxLength(300)]
+        public string RequestComments { get; set; }
     }
 
 

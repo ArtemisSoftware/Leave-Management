@@ -28,6 +28,10 @@
   
     <Compile Remove="Data\Migrations\20200409165516_AddTables.cs" />
     <Compile Remove="Data\Migrations\20200409165516_AddTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200414141221_AddLeaveRequestCancelComments.cs" />
+    <Compile Remove="Data\Migrations\20200414141221_AddLeaveRequestCancelComments.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200414141611_AddLeaveRequestCancelComments.cs" />
+    <Compile Remove="Data\Migrations\20200414141611_AddLeaveRequestCancelComments.Designer.cs" />
   </ItemGroup>
 
 
