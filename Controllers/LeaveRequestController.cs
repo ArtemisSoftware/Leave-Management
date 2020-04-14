@@ -65,6 +65,36 @@ namespace LeaveManagement.Controllers
         }
 
 
+        public ActionResult MyLeave()
+        {
+            try
+            {
+
+                var user = _userManager.GetUserAsync(User).Result;
+
+
+                var employeeAllocationsModel = _mapper.Map<List<LeaveAllocationViewModel>>(_leaveaAllocationrepo.GetLeaveAllocationByEmployee(user.Id));
+                var employeeRequestsModel = _mapper.Map<List<LeaveRequestViewModel>>(_leaveaRequestrepo.GetLeaveRequestsByEmployee(user.Id));
+
+                var model = new EmployeeLeaveRequestViewModel
+                {
+                    LeaveAllocations = employeeAllocationsModel,
+                    LeaveRequests = employeeRequestsModel
+                };
+
+                return View(model);
+
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+        }
+
+
+
         public ActionResult ApproveRequest(int id)
         {
             try
@@ -210,7 +240,7 @@ namespace LeaveManagement.Controllers
                 }
 
 
-                return RedirectToAction(nameof(Index), "Home");
+                return RedirectToAction("MyLeave");
             }
             catch(Exception ex)
             {
